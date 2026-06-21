@@ -19,7 +19,9 @@ app.listen(port, (err) => {
 const isTaskValid = (task) => {
   return (
     typeof task.title === "string" &&
+    task.title.trim().length > 0 &&
     typeof task.description === "string" &&
+    task.description.trim().length > 0 &&
     typeof task.completed === "boolean"
   );
 };
