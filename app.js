@@ -2,8 +2,32 @@ const express = require("express");
 const app = express();
 const port = 3000;
 
-const data = require("./task.json");
-const tasks = data.tasks;
+const tasks = [
+  {
+    id: 1,
+    title: "Set up environment",
+    description: "Install Node.js, npm, and git",
+    completed: true,
+  },
+  {
+    id: 2,
+    title: "Create a new project",
+    description: "Create a new project using the Express application generator",
+    completed: true,
+  },
+  {
+    id: 3,
+    title: "Install nodemon",
+    description: "Install nodemon as a development dependency",
+    completed: true,
+  },
+  {
+    id: 4,
+    title: "Install Express",
+    description: "Install Express",
+    completed: false,
+  }
+];
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
