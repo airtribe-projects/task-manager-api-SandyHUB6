@@ -47,7 +47,7 @@ const isTaskIdValid = (id) => {
   return Number.isInteger(taskId) && taskId > 0;
 };
 
-// GET all tasks with filtering
+// GET all tasks with optional filtering
 app.get("/tasks", (req, res) => {
   let result = [...tasks];
 
@@ -91,8 +91,13 @@ app.post("/tasks", (req, res) => {
     });
   }
 
+  const nextId =
+    tasks.length > 0
+      ? Math.max(...tasks.map((t) => t.id)) + 1
+      : 1;
+
   const newTask = {
-    id: Math.max(...tasks.map((t) => t.id)) + 1,
+    id: nextId,
     ...req.body,
   };
 
